@@ -22,4 +22,15 @@ end
 
 student_ids = Array.new(NUM_STUDENTS) { rand(111111..999999) }
 
-student_emails = []
+student_emails = Array.new 
+student_names.each_with_index do |name, i|
+  split_name = name.split(' ')
+  temp_id = student_ids[i]
+  student_emails << name[0] + split_name[1] + split_id[-3..-1] + "@adadevelopersacademy.org"
+end
+
+student_names.each_with_index do |name, i|
+  puts "Name: #{name}"
+  puts "ID: #{student_ids[i]}"
+  puts "email: #{student_emails[i]}"
+end
