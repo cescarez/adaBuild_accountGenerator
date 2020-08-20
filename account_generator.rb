@@ -24,12 +24,12 @@ end
 student_info[:ids] = Array.new(NUM_STUDENTS) { rand(111111..999999) }
 
 student_info[:emails] = Array.new 
-
-student_info[:names].each_with_index do |name, i|
-  split_name = student_info[:names][i].split(' ')
-  split_id = student_info[:ids][i].to_s.split('')
-  student_info[:emails] << student_info[:names][i][0] + split_name[-1] + split_id[-3] + split_id[-2] + split_id[-1] + "@adadevelopersacademy.org"
-end
+student_names.each_with_index { |name, i| student_emails << student_names[i][0] + student_names[i].split(' ')[-1] + student_ids[i].to_s[-3..-1] + "@adadevelopersacademy.org" }
+# student_info[:names].each_with_index do |name, i|
+#   split_name = student_info[:names][i].split(' ')
+#   split_id = student_info[:ids][i].to_s.split('')
+#   student_info[:emails] << student_info[:names][i][0] + split_name[-1] + split_id[-3] + split_id[-2] + split_id[-1] + "@adadevelopersacademy.org"
+# end
 
 student_info[:names].each_with_index do |name, i|
   puts "Name: #{name}"
