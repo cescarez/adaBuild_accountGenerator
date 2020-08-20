@@ -10,6 +10,7 @@ NUM_STUDENTS = 5
 puts "Please enter the full names of #{NUM_STUDENTS} students. "
 
 student_names = []
+student_ids = []
 i = 0
 NUM_STUDENTS.times do 
   print "Student #{i + 1}: "
@@ -21,7 +22,9 @@ NUM_STUDENTS.times do
   i += 1
 end
 
-student_ids = Array.new(NUM_STUDENTS) { rand(111111..999999) }
+until student_ids.uniq.length == 5
+  student_ids << rand(111111..999999) 
+end
 
 student_emails = Array.new 
 student_names.each_with_index { |name, i| student_emails << student_names[i][0] + student_names[i].split(' ')[-1] + student_ids[i].to_s[-3..-1] + "@adadevelopersacademy.org" }
