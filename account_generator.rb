@@ -14,32 +14,32 @@
 # 3. Uncomment the below code block and comment out the following code block (end marked with "END BLOCK")
 
 ##################### UNCOMMENT THIS CODE TO ADD STUDENT NAMES FROM AN EXTERNAL FILE #############
-# external_file_data = File.readlines("names.txt")
-# NUM_STUDENTS = external_file_data.length
-
-# student_names = []
-# external_file_data.each do |name|
-#   student_names << name.strip.upcase
-# end
-###################################### END BLOCK #########################################
-##################### UNCOMMENT THIS CODE TO MANUALLY ADD STUDENT ACCOUNTS #############
-#CONSTANTS
-NUM_STUDENTS = 5
-
-#MAIN
-puts "Please enter the full names of #{NUM_STUDENTS} students. "
+external_file_data = File.readlines("names.txt")
+NUM_STUDENTS = external_file_data.length
 
 student_names = []
-i = 0
-NUM_STUDENTS.times do 
-  print "Student #{i + 1}: "
-  student_names << gets.chomp.strip.upcase
-  until student_names[i].include?(' ')
-    puts "Entry was not accepted. Please enter both first and last name."
-    student_names[i] = gets.chomp.strip.upcase
-  end
-  i += 1
+external_file_data.each do |name|
+  student_names << name.strip.upcase
 end
+###################################### END BLOCK #########################################
+##################### UNCOMMENT THIS CODE TO MANUALLY ADD STUDENT ACCOUNTS #############
+# #CONSTANTS
+# NUM_STUDENTS = 5
+
+# #MAIN
+# puts "Please enter the full names of #{NUM_STUDENTS} students. "
+
+# student_names = []
+# i = 0
+# NUM_STUDENTS.times do 
+#   print "Student #{i + 1}: "
+#   student_names << gets.chomp.strip.upcase
+#   until student_names[i].include?(' ')
+#     puts "Entry was not accepted. Please enter both first and last name."
+#     student_names[i] = gets.chomp.strip.upcase
+#   end
+#   i += 1
+# end
 ###################################### END BLOCK #########################################
 
 student_ids = []
