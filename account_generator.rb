@@ -22,13 +22,18 @@ NUM_STUDENTS.times do
   i += 1
 end
 
-until student_ids.uniq.length == 5
+until student_ids.uniq.length == NUM_STUDENTS
+  id = rand(111111..999999) 
+  while id.to_s[-3..-1].to_i < 100
+    id = rand(111111..999999) 
+  end
   student_ids << rand(111111..999999) 
 end
 
 student_emails = Array.new 
 student_names.each_with_index { |name, i| student_emails << student_names[i][0] + student_names[i].split(' ')[-1] + student_ids[i].to_s[-3..-1] + "@adadevelopersacademy.org" }
 
+#not implemented to print in parallel
 student_names.each_with_index do |name, i|
   puts "Name: #{name}"
   puts "ID: #{student_ids[i]}"
