@@ -30,8 +30,19 @@ until student_ids.uniq.length == NUM_STUDENTS
   student_ids << rand(111111..999999) 
 end
 
-student_emails = Array.new 
-student_names.each_with_index { |name, i| student_emails << student_names[i][0] + student_names[i].split(' ')[-1] + student_ids[i].to_s[-3..-1] + "@adadevelopersacademy.org" }
+student_emails = []
+student_names.each_with_index do |name, i| 
+  split_names = name.split(' ')
+  if split_names.length > 2
+    first_name_init = ""
+    split_names.each do |partial_name|
+      first_name_init << partial_name[0] 
+    end
+    student_emails << first_name_init[0..-2] + split_names[-1] + student_ids[i].to_s[-3..-1] + "@adadevelopersacademy.org"
+  else
+    student_emails << student_names[i][0] + split_names[-1] + student_ids[i].to_s[-3..-1] + "@adadevelopersacademy.org"
+  end
+end
 
 #not implemented to print in parallel
 student_names.each_with_index do |name, i|
