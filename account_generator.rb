@@ -3,6 +3,11 @@
 #Ada Developer's Academy C14
 #Ada Build: Section 6 Assessment: question  l, "Account Generator" 
 
+# If names to be read into from an external file
+# 1. change the name of the external file in the below code
+# 2. ensure names are separated by a line-break, else fix this code to the appropriate delimiter
+# 3. Uncomment the below code block and comment out the NUM_STUDENTS constant
+
 #CONSTANTS
 NUM_STUDENTS = 5
 
@@ -33,20 +38,28 @@ end
 student_emails = []
 student_names.each_with_index do |name, i| 
   split_names = name.split(' ')
+  split_names.delete(' ')
   if split_names.length > 2
-    first_name_init = ""
+    name_initials = ""
     split_names.each do |partial_name|
-      first_name_init << partial_name[0] 
+      name_initials << partial_name[0] 
     end
-    student_emails << first_name_init[0..-2] + split_names[-1] + student_ids[i].to_s[-3..-1] + "@adadevelopersacademy.org"
+    #name_initials includes initial for last name, so range must be used to exclude final character when building email addresses
+    student_emails << name_initials[0..-2] + split_names[-1] + student_ids[i].to_s[-3..-1] + "@adadevelopersacademy.org"
   else
     student_emails << student_names[i][0] + split_names[-1] + student_ids[i].to_s[-3..-1] + "@adadevelopersacademy.org"
   end
 end
 
-#not implemented to print in parallel
+#output formatting
+print "\n"
+printf("%-45s", "Name")
+printf("%-10s", "ID")
+printf("%-45s", "Email")
+print "\n"
 student_names.each_with_index do |name, i|
-  puts "Name: #{name}"
-  puts "ID: #{student_ids[i]}"
-  puts "email: #{student_emails[i]}"
+  printf("%-45s", name)
+  printf("%-10s", student_ids[i])
+  printf("%-45s", student_emails[i])
+  print "\n"
 end
