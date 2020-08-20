@@ -2,31 +2,47 @@
 #Last updated: August 18, 2020
 #Ada Developer's Academy C14
 #Ada Build: Section 6 Assessment: question  l, "Account Generator" 
+#sources:
+# https://www.rubyguides.com/2018/01/ruby-string-methods/
+# https://www.rubyguides.com/2015/05/working-with-files-ruby/
+# https://ruby-doc.org/core-2.7.1/Kernel.html#method-i-sprintf
 
+ 
 # If names to be read into from an external file
-# 1. change the name of the external file in the below code
-# 2. ensure names are separated by a line-break, else fix this code to the appropriate delimiter
-# 3. Uncomment the below code block and comment out the NUM_STUDENTS constant
+# 1. change the name of the external file in the below code (currently coded as: "names.txt")
+# 2. ensure names are separated by a line-break in the external file
+# 3. Uncomment the below code block and comment out the following code block (end marked with "END BLOCK")
 
-#CONSTANTS
-NUM_STUDENTS = 5
-
-#MAIN
-puts "Please enter the full names of #{NUM_STUDENTS} students. "
+##################### UNCOMMENT THIS CODE TO ADD STUDENT NAMES FROM AN EXTERNAL FILE #############
+external_file_data = File.readlines("names.txt")
+NUM_STUDENTS = external_file_data.length
 
 student_names = []
-student_ids = []
-i = 0
-NUM_STUDENTS.times do 
-  print "Student #{i + 1}: "
-  student_names << gets.chomp.strip.upcase
-  until student_names[i].include?(' ')
-    puts "Entry was not accepted. Please enter both first and last name."
-    student_names[i] = gets.chomp.strip.upcase
-  end
-  i += 1
+external_file_data.each do |name|
+  student_names << name.strip.upcase
 end
+###################################### END BLOCK #########################################
+##################### UNCOMMENT THIS CODE TO MANUALLY ADD STUDENT ACCOUNTS #############
+##CONSTANTS
+# NUM_STUDENTS = 5
 
+##MAIN
+# puts "Please enter the full names of #{NUM_STUDENTS} students. "
+
+# student_names = []
+# i = 0
+# NUM_STUDENTS.times do 
+#   print "Student #{i + 1}: "
+#   student_names << gets.chomp.strip.upcase
+#   until student_names[i].include?(' ')
+#     puts "Entry was not accepted. Please enter both first and last name."
+#     student_names[i] = gets.chomp.strip.upcase
+#   end
+#   i += 1
+# end
+###################################### END BLOCK #########################################
+
+student_ids = []
 until student_ids.uniq.length == NUM_STUDENTS
   id = rand(111111..999999) 
   while id.to_s[-3..-1].to_i < 100
@@ -51,7 +67,6 @@ student_names.each_with_index do |name, i|
   end
 end
 
-#output formatting
 print "\n"
 printf("%-45s", "Name")
 printf("%-10s", "ID")
