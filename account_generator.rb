@@ -38,7 +38,7 @@ end
 #   print "Student #{i + 1}: "
 #   student_names << gets.chomp.strip.upcase
 #   until (student_names[i].include?(' ') && student_names[i].strip.length > 0)
-#     puts "Entry was not accepted. Please enter both first and last name."
+#     puts "Entry was not accepted. Please enter student first and last name."
 #     student_names[i] = gets.chomp.strip.upcase
 #   end
 #   i += 1
