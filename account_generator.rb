@@ -63,7 +63,7 @@ student_names.each_with_index do |name, i|
     #name_initials includes initial for last name, so range must be used to exclude final character when building email addresses
     student_emails << name_initials[0..-2] + split_names[-1] + student_ids[i].to_s[-3..-1] + "@adadevelopersacademy.org"
   else
-    student_emails << student_names[i][0] + split_names[-1] + student_ids[i].to_s[-3..-1] + "@adadevelopersacademy.org"
+    student_emails << name[0] + split_names[-1] + student_ids[i].to_s[-3..-1] + "@adadevelopersacademy.org"
   end
 end
 
