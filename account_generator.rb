@@ -19,8 +19,11 @@ NUM_STUDENTS = external_file_data.length
 
 student_names = []
 external_file_data.each do |name|
-  student_names << name.strip.upcase
+  if name.strip.length > 0
+    student_names << name.strip.upcase
+  end
 end
+
 ###################################### END BLOCK #########################################
 ##################### UNCOMMENT THIS CODE TO MANUALLY ADD STUDENT ACCOUNTS #############
 # #CONSTANTS
@@ -34,7 +37,7 @@ end
 # NUM_STUDENTS.times do 
 #   print "Student #{i + 1}: "
 #   student_names << gets.chomp.strip.upcase
-#   until student_names[i].include?(' ')
+#   until (student_names[i].include?(' ') && student_names[i].strip.length > 0)
 #     puts "Entry was not accepted. Please enter both first and last name."
 #     student_names[i] = gets.chomp.strip.upcase
 #   end
@@ -42,6 +45,7 @@ end
 # end
 ###################################### END BLOCK #########################################
 
+student_names.compact
 student_ids = []
 until student_ids.uniq.length == NUM_STUDENTS
   id = rand(111111..999999) 
